@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cabby',
     'location_field.apps.DefaultConfig',
     'django.contrib.gis',
-
     'pyuploadcare.dj',
+
+    'passenger',
+    'driver',
 ]
 
 # DATABASES['default'] = dj_database_url.config()
@@ -67,7 +68,7 @@ ROOT_URLCONF = 'cabbify.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
