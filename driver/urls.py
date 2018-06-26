@@ -7,5 +7,5 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^driver/index$', views.index, name='index'),
+    url(r'^driver/index/$', views.index, name='index'),
 ]
