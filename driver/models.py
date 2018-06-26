@@ -8,6 +8,8 @@ from django.contrib.gis.db import models as gis_models
 from location_field.models.spatial import LocationField
 from pyuploadcare.dj.models import ImageField
 
+from django_google_maps import fields as map_fields
+
 
 # ///////////////////////////////////////////////////////////////
 
@@ -32,28 +34,20 @@ class Driver(models.Model):
     car_type = models.ForeignKey(Car, on_delete=models.PROTECT,blank=True,null=True)
     profile_picture = models.ImageField(blank=True)
 
-    # rating = models.OneToOneField(DriverRating)
-
-    # @receiver(post_save, sender=User)
-    # def create_driver_profile(sender, instance, created, **kwargs):
-    #     if created:OneToOneField
-    #         driver.objects.create(user=instance)
-
-    # @receiver(post_save, sender=User)
-    # def save_driver_profile(sender, instance, **kwargs):
-    #     instance.driver.save()
-
-    # @receiver(post_save, sender=User)
-    # def delete_driver_profile(sender, instance, **kwargs):
-    #     instance.driver.delete()
-    
-    # @classmethod
-    # def all_driver_details(cls):
-    #     details = cls.objects.all()
-
-
     class Meta:
         ordering = ['user']
+
+
+
+class DriverLocation(models.Model):
+
+    address = map_fields.AddressField(max_length=200, blank=True)
+    geolocation = map_fields.GeoLocationField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.address
+
+   
 
 
 

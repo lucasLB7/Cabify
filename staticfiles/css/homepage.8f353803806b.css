@@ -1,0 +1,13 @@
+.navbar{
+    background-color: rgb(52, 73, 167);
+  }
+
+
+.homepage-intro{
+    width: 99%;
+    background-image: url(/media/homepage/minimal_background.jpg);
+    background-size: cover;
+    text-align: center;
+    color: rgb(38, 38, 32);
+    height: 200px;
+}

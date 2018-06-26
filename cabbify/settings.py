@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'registration',
     'register',
     'django_google_maps',
+    'mapwidgets',
 
     'passenger',
     'driver',
@@ -173,3 +174,6 @@ LEAFLET_CONFIG = {
     'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46)
 }
 ACCOUNT_ACTIVATION_DAYS=7
+
+
+GOOGLE_MAPS_API_KEY=config('GOOGLE_MAPS_API_KEY')
