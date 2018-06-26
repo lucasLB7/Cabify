@@ -1,0 +1,36 @@
+{% load static %}
+{% load bootstrap3 %}
+{% load leaflet_tags %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Cabify: Get anywhere, fast, cheap and safely</title>
+    {% endif %} {% block styles %} {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}"> {% endblock %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+
+
+</head>
+
+
+
+<body>
+    {% include "driver/navbar.html" %} 
+    {% block content %} 
+   
+    {% endblock %}
+
+
+</body>
+
+</html>

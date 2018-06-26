@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar">
+
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand nav_btn" href="{% url 'home' %}">BACK TO PHOTOS</a>
+        <a class="navbar-brand nav_btn" href="{% url 'home' %}">TOP RATED PHOTOS</a>
+
+        <span class="navbar-brand">
+            {% if user.is_authenticated %}
+            
+              <div class="dropdown">
+                <a href="#" class="nav_btn_user" data-toggle="dropdown" role="button" aria-expanded="false">DASHBOARD
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="{%url 'home'%}">Home</a>
+                  </li>
+                  
+                </ul>
+              </div>
+            
+            {% else %}
+            
+              <a class='nav_btn_user' href="/accounts/login">LOGIN</a>
+
+              
+            
+    
+            {% endif %}
+        </span>
+        </div>
+         
+      </div>
+
+
+     
+  </nav>

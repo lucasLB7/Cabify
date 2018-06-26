@@ -1,0 +1,43 @@
+<nav class="navbar navbar">
+
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand nav_btn" href="/driver/index">DRIVER PROFILE</a>
+
+      
+            <span class="navbar-brand">
+              {% if user.is_authenticated %}
+      
+              <div class="dropdown">
+                <a href="#" class="nav_btn_user" data-toggle="dropdown" role="button" aria-expanded="false">MORE ACTIONS
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="/driver/index">Home</a>
+                  </li>
+      
+                </ul>
+              </div>
+      
+              {% else %}
+      
+              <a class='nav_btn_user' href="/accounts/login.html">LOGIN</a>
+
+            
+      
+      
+      
+      
+              {% endif %}
+            </span>
+            <span class="navbar-right">
+                {% block content %} <p class='text-center todays_date'>Todays date: <strong>{{date|date:"l d-F Y"}}</strong></p> {%endblock%}
+            </span>
+          </div>
+      
+        </div>
+      
+      
+      
+      </nav>
