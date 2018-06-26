@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'djgeojson',
     'registration',
     'register',
+    'django_google_maps',
 
     'passenger',
     'driver',
