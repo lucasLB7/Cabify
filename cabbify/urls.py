@@ -16,13 +16,23 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
+from django.conf.urls.static import static
+from cabbify import settings
+from django.views.generic import TemplateView
+from djgeojson.views import GeoJSONLayerView
+
+# from home.models import Mapping
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^logout/$', views.logout, {"next_page": '/'}),
-    url(r'',include('driver.urls')),
-    url(r'',include('usertype.urls')),
-    url(r'',include('home.urls')),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
+    url(r'^',include('register.urls',namespace="register")),
+    url(r'^',include('driver.urls',namespace="driver")),
+    url(r'^',include('passenger.urls',namespace="passenger")),
+    # url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Mapping, properties=('title', 'description', 'picture_url')), name='data'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

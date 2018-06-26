@@ -45,9 +45,14 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'django.contrib.gis',
     'pyuploadcare.dj',
+    'djgeojson',
+    'registration',
+    'register',
 
     'passenger',
     'driver',
+
+    'leaflet',
 ]
 
 # DATABASES['default'] = dj_database_url.config()
@@ -141,7 +146,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -157,8 +161,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Email configurations remember to install python-decouple
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS',default=True,cast=bool)
 EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_PORT = config('EMAIL_PORT',cast= int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46)
+}
+ACCOUNT_ACTIVATION_DAYS=7

@@ -1,0 +1,8 @@
+{% extends 'registration/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{{ block.super }}
+<h3 style="text-align: center;">{% trans "Registration is currently closed." %}</h3>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'registration/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{{ block.super }}  
+   {% if request.user.is_authenticated %}
+    <h2>Welcome {{request.user.username }}</h2>
+    <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'register:create-passenger' %}" class="btn btn-info btn-lg" role="button">I'm a Passenger</a>
+    <a href="{% url 'register:create-driver' %}" class="btn btn-success btn-lg" role="button">I'm a Driver</a>
+    {% endif %}
+{% endblock %}

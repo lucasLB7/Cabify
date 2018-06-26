@@ -7,5 +7,5 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^passenger_profile$', views.driver_profile, name='home'),
+    url(r'^passenger/index$', views.index, name='index'),
 ]
