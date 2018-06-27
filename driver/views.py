@@ -10,8 +10,9 @@ from .forms import DriverLocationForm, DriverProfileForm
 
 
 @login_required(login_url="accounts/login")
-def index(request):
+def index(request, user_id):
     date = dt.date.today()
+    all_details = Driver.get_all_details_by_id(user_id)
 
     if request.method == 'POST':
         map_form = DriverLocationForm(request.POST)
@@ -27,7 +28,7 @@ def index(request):
         map_form = DriverLocationForm()
         profile_form = DriverProfileForm()
         
-    return render(request,'driver/index.html', {"date":date , "map_form":map_form , "profile_form": profile_form})
+    return render(request,'driver/index.html', {"date":date , "map_form":map_form , "profile_form": profile_form , "all_details":all_details})
 
 
 

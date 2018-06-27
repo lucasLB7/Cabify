@@ -37,6 +37,20 @@ class Driver(models.Model):
     class Meta:
         ordering = ['user']
 
+    @classmethod
+    def get_all_details_by_id(cls, id):
+        all_details = Driver.objects.get(pk=id)
+        return all_details
+    
+    # @classmethod
+    # def get_prof_pic_by_id(cls, id):
+    #     prof_pic = Driver.objects.get(pk=id)
+    #     return prof_pic
+
+    # @classmethod
+    # def get_all_details_by_id(cls, id):
+    #     all_details = Driver.objects.
+
 # ///////////////////////////////////////////////////////////////
 
 class DriverLocation(models.Model):

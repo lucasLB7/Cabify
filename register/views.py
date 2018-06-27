@@ -14,7 +14,7 @@ def index(request):
     passenger_users=[x.user for x in Passenger.objects.all()]
 
     if user in driver_users:
-        return redirect('driver:index')
+        return redirect('driver:index', user_id=3)
 
     if user in passenger_users:
         return redirect('passenger:index')

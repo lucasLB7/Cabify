@@ -9,16 +9,60 @@
 <h3>Welcome to your driver's profile</h3>
 
 <div class="row">
-    <div class="col-xs-9 col-md-9 driver-profile-picture-box">
-            <div class="col-xs-5 col-md-5">
-                <div class="driver-image-box">
-                    <img src="" alt="">
-                </div>
-            </div>
-        
 
+    <div class="col-xs-5 col-md-5 driver-profile-picture-box">
+        <div class="row">
+                <div class="col-xs-6 col-md-6"> 
+                    <div class="driver-image-box">
+                            {% if all_details.profile_picture.url %}
+                                    <img class="driver-image-box" src="{{all_details.profile_picture.url}}" alt="">
+                            {% else %}
+                                    <h3>No profile pic set</h3>
+                                    <p>Click here to set one now</p>
+                            {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-md-6"> 
+                    <h3>My details:</h3>
+
+                    {% if all_details.first_name.url %}
+                    <p><strong>First name:</strong> {{all_details.first_name}} </p>
+                    {% else %}
+                    <p><strong>First name: </strong> You haven't given us your first name. </p>
+                    {% endif %}
+
+                    {% if all_details.last_name.url %}
+                    <p><strong>Last name: </strong> {{all_details.last_name}} </p>
+                    {% else %}
+                    <p><strong>Last name: </strong> You haven't given us your last name. </p>
+                    {% endif %}
+
+                    {% if all_details.phone_number.url %}
+                    <p><strong>Mobile number: </strong> {{all_details.phone_number}} </p>
+                    {% else %}
+                    <p><strong>Mobile number: </strong>You haven't given us your number </p>
+                    {% endif %}
+
+                    {% if all_details.car_type.url %}
+                    <p><strong>Car(s): </strong> {{all_details.car_type}} </p>
+                    {% else %}
+                    <p><strong>Car(s): </strong>No cars to show </p>
+                    {% endif %}
+                    
+                </div>
+
+
+
+            </div>
+    </div>
+
+    <div class="col-xs-5 col-md-5">
+        <h1>test</h1>
     </div>
 </div>
+
+
 
 
 
