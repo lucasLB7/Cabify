@@ -1,12 +1,36 @@
  {% extends 'driver/base.html' %} 
- {% load bootstrap3 %} 
+ {% load bootstrap4 %} 
  
  {% block content %}
-<h1>Hi driver {{request.user.username}} </h1>
-<button class="btn btn-danger">test for bootstrap</button>
+ {{block.super}}
+
+ <div class="main-page-background">
+<h1>Heya {{request.user.username}} </h1>
+<h3>Welcome to your driver's profile</h3>
+
+<div class="row">
+    <div class="col-xs-9 col-md-9 driver-profile-picture-box">
+            <div class="col-xs-5 col-md-5">
+                <div class="driver-image-box">
+                    <img src="" alt="">
+                </div>
+            </div>
+        
+
+    </div>
+</div>
 
 
+
+
+
+<form method="POST" action="">
 {% csrf_token %} 
 {% bootstrap_form map_form %}
+</form>
+
+
+</div>
+
 
 {% endblock %}

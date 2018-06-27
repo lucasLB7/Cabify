@@ -1,5 +1,5 @@
 from django import forms
-from .models import DriverLocation
+from .models import DriverLocation, Driver
 from django_google_maps.widgets import GoogleMapsAddressWidget
 
 class DriverLocationForm(forms.ModelForm):
@@ -9,3 +9,12 @@ class DriverLocationForm(forms.ModelForm):
         widgets = {
             'address': GoogleMapsAddressWidget,
         }
+
+
+class DriverProfileForm(forms.ModelForm):
+    class Meta:
+        model = Driver
+        fields = '__all__'
+       
+
+    

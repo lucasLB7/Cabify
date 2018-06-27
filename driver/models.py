@@ -32,12 +32,12 @@ class Driver(models.Model):
     phone_number = models.IntegerField(null=True,blank=True)
     national_id = models.IntegerField(null=True,blank=True)
     car_type = models.ForeignKey(Car, on_delete=models.PROTECT,blank=True,null=True)
-    profile_picture = models.ImageField(blank=True)
+    profile_picture = models.ImageField(blank=True, upload_to="profile_images/", default='profile_images/default_image.png')
 
     class Meta:
         ordering = ['user']
 
-
+# ///////////////////////////////////////////////////////////////
 
 class DriverLocation(models.Model):
 

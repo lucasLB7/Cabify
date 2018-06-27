@@ -6,7 +6,7 @@ from django_google_maps.widgets import GoogleMapsAddressWidget
 from django_google_maps.fields import AddressField, GeoLocationField
 
 
-from .models import DriverLocation
+from .models import DriverLocation, Driver, Car
 
 
 
@@ -25,6 +25,8 @@ class DriverAdmin(admin.ModelAdmin):
     
 
 admin.site.register(DriverLocation, DriverAdmin)
+admin.site.register(Driver)
+admin.site.register(Car)
 
 
 

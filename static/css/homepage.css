@@ -1,13 +1,54 @@
 .navbar{
-    background-color: rgb(52, 73, 167);
+    background-color: rgb(193, 193, 193);
+    border-style: solid 
   }
 
 
 .homepage-intro{
     width: 99%;
-    background-image: url(/media/homepage/minimal_background.jpg);
+    background-image: url(/media/background_driver_app.jpg);
     background-size: cover;
     text-align: center;
     color: rgb(38, 38, 32);
     height: 200px;
+}
+
+#map-canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+  }
+
+.map{
+    height: 200px;
+}
+
+.main-page-background{
+    background-image: url('/media/connectwork.png');
+    opacity: ;
+    
+
+}
+
+
+.main-page-background h1{
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+
+}
+
+.driver-profile-picture-box{
+    height: 250px;
+    background-color: #fff;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    opacity: .6;
+}
+
+.driver-image-box{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
 }
