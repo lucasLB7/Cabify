@@ -6,5 +6,7 @@
 {% block content %}
 {{ block.super }}
 
+<h1 class="email_activation_success activation-complete">Welcome to the clan!!</h1>
 <h3 style="text-align:center;">{% trans "Super!! You're one step closer to <strong>UNLIMITED</strong> transport accross Kenya " %}</h3>
+<a href="{% url 'register:newprofile' %}" class="btn btn-success btn-lg" role="button">Next</a>
 {% endblock %}

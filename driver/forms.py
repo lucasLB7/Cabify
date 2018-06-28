@@ -15,6 +15,9 @@ class DriverProfileForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = '__all__'
+
+
+    
        
 
     

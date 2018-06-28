@@ -55,3 +55,30 @@
     margin: 2%;
 }
 
+.email_activation_success{
+    background-color: #ee2f2f;
+    color: #fff;
+}
+
+
+
+
+.usertype{
+    text-align: center;
+    background-image: url(../../media/login/background_driver_app.jpg);
+    color: #fff;
+
+
+}
+
+.activation-complete{
+    text-align: center;
+    background-color: #ee2f2f;
+
+}
+
+.map-preview{
+    margin: 3%;
+    width: 60%;
+    height: 60%;
+}

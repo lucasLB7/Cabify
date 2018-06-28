@@ -1,5 +1,9 @@
  {% extends 'driver/base.html' %} 
- {% load bootstrap4 %} 
+ {% load static bootstrap4 %} 
+
+ {% block styles %}
+ {{block.super}}
+ {% endblock %}
  
  {% block content %}
  {{block.super}}
@@ -26,26 +30,34 @@
                 <div class="col-xs-6 col-md-6"> 
                     <h3>My details:</h3>
 
-                    {% if all_details.first_name.url %}
+                    {% if all_details.first_name %}
                     <p><strong>First name:</strong> {{all_details.first_name}} </p>
                     {% else %}
                     <p><strong>First name: </strong> You haven't given us your first name. </p>
                     {% endif %}
 
-                    {% if all_details.last_name.url %}
+                    {% if all_details.last_name %}
                     <p><strong>Last name: </strong> {{all_details.last_name}} </p>
                     {% else %}
                     <p><strong>Last name: </strong> You haven't given us your last name. </p>
                     {% endif %}
 
-                    {% if all_details.phone_number.url %}
+                    {% if all_details.phone_number %}
                     <p><strong>Mobile number: </strong> {{all_details.phone_number}} </p>
                     {% else %}
                     <p><strong>Mobile number: </strong>You haven't given us your number </p>
                     {% endif %}
 
-                    {% if all_details.car_type.url %}
-                    <p><strong>Car(s): </strong> {{all_details.car_type}} </p>
+                    {% if driver.car.all %}
+                    {% for car in  driver.car.all %}
+                    <p><strong>Car(s): </strong> {{car.model}}, {{car.make}} </p>
+                    {% endfor %}
+                    {% else %}
+                    <p><strong>Car(s): </strong>No cars to show </p>
+                    {% endif %}
+
+                    {% if all_details.national_id%}
+                    <p><strong>National ID: </strong> {{all_details.national_id}} </p>
                     {% else %}
                     <p><strong>Car(s): </strong>No cars to show </p>
                     {% endif %}
@@ -62,19 +74,17 @@
     </div>
 </div>
 
+<div class="map-preview">
 
-
-
-
-
-
-<form method="POST" action="">
-{% csrf_token %} 
-{% bootstrap_form map_form %}
-</form>
-
+    <form method="POST" action="">
+    {% csrf_token %} 
+    {% bootstrap_form form %}
+    </form>
 
 </div>
 
 
+{% endblock %}
+{% block script %}
+{{ block.super }}
 {% endblock %}

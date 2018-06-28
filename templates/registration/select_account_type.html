@@ -4,10 +4,44 @@
 {% load bootstrap4 %}
 {% block content %}
 {{ block.super }}  
-   {% if request.user.is_authenticated %}
-    <h2>Welcome {{request.user.username }}</h2>
+    {% if request.user.is_authenticated %}
+    <div class="container usertype">
+
+        <h2>Welcome to Cabify,  {{request.user.username }}</h2>
+        <h3>You'll  be registerd in no time! Just a few more steps to go...</h3>
+
     <p class="lead">Select below the type of account you want to create</p>
     <a href="{% url 'register:create-passenger' %}" class="btn btn-info btn-lg" role="button">I'm a Passenger</a>
-    <a href="{% url 'register:create-driver' %}" class="btn btn-success btn-lg" role="button">I'm a Driver</a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">I'm here to drive!</button>
+          
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New driver registration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                  <form method="POST" action="">
+                            <h2>Create a new driver form</h2>
+                          {% csrf_token %} 
+                          {% bootstrap_form profile_form %}
+                          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href="{% url 'register:create-driver' %}" class="btn btn-info btn-lg" role="button">I'm a Passenger</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    
+
+   
     {% endif %}
 {% endblock %}
