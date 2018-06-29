@@ -1,90 +1,150 @@
- {% extends 'driver/base.html' %} 
- {% load static bootstrap4 %} 
+ {% extends 'driver/base.html' %}
+ {% load static bootstrap4 %}
+ {% block styles %} 
+ {{block.super}} {% endblock %} 
+ {% block content %} 
+{{block.super}}
 
- {% block styles %}
- {{block.super}}
- {% endblock %}
- 
- {% block content %}
- {{block.super}}
-
- <div class="main-page-background">
-<h1>Heya {{request.user.username}} </h1>
-<h3>Welcome to your driver's profile</h3>
-
-<div class="row">
-
-    <div class="col-xs-5 col-md-5 driver-profile-picture-box">
-        <div class="row">
-                <div class="col-xs-6 col-md-6"> 
-                    <div class="driver-image-box">
-                            {% if all_details.profile_picture.url %}
-                                    <img class="driver-image-box" src="{{all_details.profile_picture.url}}" alt="">
-                            {% else %}
-                                    <h3>No profile pic set</h3>
-                                    <p>Click here to set one now</p>
-                            {% endif %}
-                    </div>
-                </div>
-
-                <div class="col-xs-6 col-md-6"> 
-                    <h3>My details:</h3>
-
-                    {% if all_details.first_name %}
-                    <p><strong>First name:</strong> {{all_details.first_name}} </p>
-                    {% else %}
-                    <p><strong>First name: </strong> You haven't given us your first name. </p>
-                    {% endif %}
-
-                    {% if all_details.last_name %}
-                    <p><strong>Last name: </strong> {{all_details.last_name}} </p>
-                    {% else %}
-                    <p><strong>Last name: </strong> You haven't given us your last name. </p>
-                    {% endif %}
-
-                    {% if all_details.phone_number %}
-                    <p><strong>Mobile number: </strong> {{all_details.phone_number}} </p>
-                    {% else %}
-                    <p><strong>Mobile number: </strong>You haven't given us your number </p>
-                    {% endif %}
-
-                    {% if driver.car.all %}
-                    {% for car in  driver.car.all %}
-                    <p><strong>Car(s): </strong> {{car.model}}, {{car.make}} </p>
-                    {% endfor %}
-                    {% else %}
-                    <p><strong>Car(s): </strong>No cars to show </p>
-                    {% endif %}
-
-                    {% if all_details.national_id%}
-                    <p><strong>National ID: </strong> {{all_details.national_id}} </p>
-                    {% else %}
-                    <p><strong>Car(s): </strong>No cars to show </p>
-                    {% endif %}
-                    
-                </div>
-
-
-
-            </div>
+<div class="main-page-background">
+    <div class="header-driver-profile">
+        <h1>Heya {{request.user.username}} </h1>
+        <h3>Welcome to your driver's profile</h3>
+        {% if all_details.profile_picture.url %}
+        <img class="driver-image-box" src="{{all_details.profile_picture.url}}" alt=""> {% else %}
+        <h3>No profile pic set</h3>
+        <p>Click here to set one now</p>
+        {% endif %}
     </div>
 
-    <div class="col-xs-5 col-md-5">
-        <h1>test</h1>
+    <div class="row">
+
+        <div class="col-xs-4 col-md-4 driver-profile-picture-box">
+            <h3 class="text-center">Personal details</h3>
+            <div class="row">
+                <div class="vol-md-6" style="margin-left : 4%">
+
+
+                    {% if all_details.first_name %}
+                    <img src="/media/homepage/user_first_name.png" class="icons" alt="">
+                    <p>
+                        <strong>First name:</strong> {{all_details.first_name}} </p>
+                    {% else %}
+                    <img src="/media/homepage/user_first_name.png" class="icons" alt="">
+                    <p>
+                        <strong>First name: </strong> You haven't given us your first name. </p>
+                    {% endif %} {% if all_details.last_name %}
+                    <img src="/media/homepage/user_first_name.png" class="icons" alt="">
+                    <p>
+                        <strong>Last name: </strong> {{all_details.last_name}} </p>
+                    {% else %}
+                    <img src="/media/homepage/user_first_name.png" class="icons" alt="">
+                    <p>
+                        <strong>Last name: </strong> You haven't given us your last name. </p>
+                    {% endif %} {% if all_details.phone_number %}
+                    <img src="/media/homepage/phone_icon.png" class="icons" alt="">
+                    <p>
+                        <strong>Mobile number: </strong> {{all_details.phone_number}} </p>
+                    {% else %}
+                    <img src="/media/homepage/phone_icon.png" class="icons" alt="">
+                    <p>
+                        <strong>Mobile number: </strong>You haven't given us your number </p>
+                    {% endif %}
+                </div>
+                <div class="vol-md-6" style="margin-left : 4%">
+
+                    {% if driver.car.all %} {% for car in driver.car.all %}
+                    <img src="/media/homepage/Car-icon.png" class="icons" alt="">
+                    <p>
+                        <strong>Car(s): </strong> {{car.model}}, {{car.make}} </p>
+                    {% endfor %} {% else %}
+                    <img src="/media/homepage/Car-icon.png" class="icons" alt="">
+                    <p>
+                        <strong>Car(s): </strong>No cars to show </p>
+                    {% endif %} {% if all_details.national_id%}
+                    <img src="/media/homepage/id-icon.png" class="icons" alt="">
+                    <p>
+                        <strong>National ID: </strong> {{all_details.national_id}} </p>
+                    {% else %}
+                    <img src="/media/homepage/id-icon.png" class="icons" alt="">
+                    <p>
+                        <strong>Car(s): </strong>No cars to show </p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-4 col-md-4 driver-profile-picture-box-red-box">
+
+
+
+        </div>
+
+        <div class="col-xs-4 col-md-4 driver-profile-picture-box-blue-box">
+            <h3 class="text-center">Your ratings</h3>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <div class="text-center">
+
+            <span class="fa fa-star checked" style="font-size: 50px;"></span>
+            <span class="fa fa-star checked" style="font-size: 50px;"></span>
+            <span class="fa fa-star checked" style="font-size: 50px;"></span>
+            <span class="fa fa-star" style="font-size: 50px;"></span>
+            <span class="fa fa-star" style="font-size: 50px;"></span>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </div>
 
-<div class="map-preview">
+<div class="col-xs-7 col-md-7 driver-profile-picture-box-right ">
+    <h1>Driver status details: </h1>
+    <p>Find out your ranking as a Driver</p>
+    <p>
+        <small>A better rating means you are more likely to get assigned to a passenger</small>
+    </p>
+</div>
+</div>
+
+<div class="map-preview container">
+
+    <h3>Get started by saying where you are</h3>
 
     <form method="POST" action="">
-    {% csrf_token %} 
-    {% bootstrap_form form %}
+        {% csrf_token %} 
+        {% bootstrap_form form %}
     </form>
 
 </div>
 
 
 {% endblock %}
-{% block script %}
-{{ block.super }}
+{% block script %} 
+{{ block.super }} 
 {% endblock %}
